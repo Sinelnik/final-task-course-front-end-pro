@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
-	
+
 	window.addEventListener("load", showWeatherByCoordinates);
+	window.addEventListener("load", showExchangeRates);
+
+	var body = document.body;
+	var p = document.createElement('p');
+	var v = document.createElement('p');
+	p.classList.add('weatherByCityName');
+	v.classList.add('widget');
+	body.appendChild(p);
+	body.appendChild(v);
 
 	function showWeatherByCoordinates() {
 		navigator.geolocation.getCurrentPosition(function(pos) {
@@ -23,6 +32,25 @@ document.addEventListener("DOMContentLoaded", function() {
 					<span>${weatherData.weather[0].description}</span></br>
 					<img src="https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" />`
 			})
+		})
+	}
+
+	function showExchangeRates() {
+		var exchangeRates = fetch('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5');
+		exchangeRates.then(objPromise => objPromise.json()).then(courseData => {
+			var exchangeWidget = document.createElement('div');
+			exchangeWidget.classList.add('exchangeWidget');
+			v.appendChild(exchangeWidget);
+			// exchangeWidget.style.backgroundColor = 'lime';
+			exchangeWidget.style.borderRadius = '10px';
+			exchangeWidget.style.fontWeight = 'bold';
+			exchangeWidget.style.textAlign = 'center';
+			exchangeWidget.innerHTML =
+				`<p><span>EXCHANGE RATES</span></br>
+				<span>${courseData[0].ccy} ${courseData[0].buy.toString().substring(0,5)} \$ ${courseData[0].sale.toString().substring(0,5)}</span></br>
+				<span>${courseData[1].ccy} ${courseData[1].buy.toString().substring(0,5)} \€ ${courseData[1].sale.toString().substring(0,5)}</span></br>
+				<span>${courseData[2].ccy} ${courseData[2].buy.toString().substring(0,5)} \₽ ${courseData[2].sale.toString().substring(0,5)}</span></br>
+				</p>`
 		})
 	}
 });
