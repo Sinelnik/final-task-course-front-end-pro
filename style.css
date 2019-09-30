@@ -1,0 +1,69 @@
+body {
+	background-image: url("https://econet.ru/media/155/kindeditor/image/201302/20130209203959.jpg");
+	background-size: cover;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	flex-direction: column;
+}
+.widget {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.weatherByCoordinates, .exchangeWidget {
+	padding: 5px;
+	border: 1px solid #000;
+}
+
+.weatherByCityName {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.weatherByCityName > div {
+	margin-left: 20px;
+	padding: 5px;
+	border: 1px solid #000;
+}
+
+.cityName {
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	width: 70%;
+	padding: 15px;
+	border-radius: 10px;
+	background: linear-gradient(to right bottom, white, #0f8de6);
+}
+.text {
+	width: 90%;
+}
+
+.city::before {
+	content: "";
+	width: 15px;
+	height: 15px;
+	display: inline-block; 
+	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDzPhniOafXzkr7qIY-ytCFW_0TmpkY9rBis7rcEZZcROOA0m9");
+	background-size: cover;
+}
