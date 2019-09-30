@@ -115,5 +115,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	showLocalStor();
 
-	
+
+	function deleteCity(e) {
+		if (localStorage.getItem('cityList') !== null) {
+			var list = JSON.parse(localStorage.getItem('cityList'));
+			for(var i = 0; i < list.length; i++) {
+				if (list[i].name === e.target.innerText) {
+					list.splice([i],1);
+					localStorage.setItem('cityList', JSON.stringify(list));
+				}
+			}
+		}
+			
+		showLocalStor();
+	}
+
+	this.addEventListener('click',deleteCity);
+
 });
